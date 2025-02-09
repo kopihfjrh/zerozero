@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 ZeroSushi | Ultimate Food Experience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/additional.css">
+</head>
+<body>
+    <div class="cyber-background"></div>
+    
+    <nav class="nav">
+        <div class="logo">
+            <i class="fas fa-fish"></i> ZeroSushi
+        </div>
+        <div class="nav-links">
+            <a href="pages/about.html">О нас</a>
+            <a href="pages/promotions.html">Акции</a>
+            <a href="pages/contact.html">Контакты</a>
+        </div>
+        <div class="nav-controls">
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="Поиск блюд...">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+            <div class="nav-icons">
+                <div class="nav-icon">
+                    <a href="pages/profile.html"><i class="fas fa-user"></i></a>
+                </div>
+                <div class="nav-icon">
+                    <a href="pages/cart.html"><i class="fas fa-shopping-cart"></i></a>
+                    <span class="cart-count">3</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="mega-title">ZeroSushi</h1>
+            <p class="hero-subtitle">Окунитесь в гастрономическое приключение с нами</p>
+        </div>
+    </section>
+
+    <div class="category-buttons">
+        <a href="index.html" class="category-button">Все</a>
+        <a href="food/sushi.html" class="category-button">Суши</a>
+        <a href="food/pizza.html" class="category-button">Пицца</a>
+        <a href="food/doner.html" class="category-button">Донеры</a>
+        <a href="food/sets.html" class="category-button">Сеты</a>
+    </div>
+
+    <div class="food-cards-container" id="food-cards-container">
+        <!-- Food cards will be inserted here by JavaScript -->
+    </div>
+
+    <script src="data/foodData.js"></script>
+    <script src="scripts/effects.js"></script>
+    <script src="scripts/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('food-cards-container');
+            foodData.forEach(food => {
+                const card = document.createElement('div');
+                card.className = 'food-card';
+                card.dataset.name = food.name.toLowerCase();
+                card.dataset.category = food.category;
+                card.innerHTML = `
+                    <img src="${food.image}" alt="${food.name}" class="food-image">
+                    <div class="price-tag">${food.price}</div>
+                    <h3>${food.name}</h3>
+                `;
+                container.appendChild(card);
+            });
+        });
+    </script>
+</body>
+</html>
